@@ -20,6 +20,14 @@ namespace E_commerce.PL.Extentions
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProductService, ProductServices>();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowCors",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
 
             return services;

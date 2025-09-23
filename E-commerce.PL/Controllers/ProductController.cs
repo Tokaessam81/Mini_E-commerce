@@ -3,12 +3,15 @@ using E_commerce.Application.DTOs.ProductDtos;
 using E_commerce.Application.Service.Contract;
 using E_commerce.Core.Domain.Entities;
 using E_commerce.PL.Errors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace E_commerce.PL.Controllers
 {
+
+    [Authorize]
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
@@ -40,6 +43,7 @@ namespace E_commerce.PL.Controllers
         var productDto = _mapper.Map<ReadProductDto>(product.Data);
         return Ok(new ApiResponse<ReadProductDto>(200, "Success", productDto));
         }
+
         [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
