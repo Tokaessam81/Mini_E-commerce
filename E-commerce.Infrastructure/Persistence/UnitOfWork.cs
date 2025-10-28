@@ -19,13 +19,17 @@ namespace E_commerce.Infrastructure.Persistence
         public IUserRepo _userRepo { get; set; }
         public IRefreshTokenRepo _refreshTokenRepo { get; set; }
         public IProductRepo _ProductRepository { get ; set ; }
+        public ICartRepo _CartRepository { get; set; }
+        public ICartItemRepo _CartItemRepository { get; set; }
 
-        public UnitOfWork(ECommerceDbContext context,IUserRepo userRepo, IRefreshTokenRepo refreshTokenRepo, IProductRepo productRepository)
+        public UnitOfWork(ECommerceDbContext context,IUserRepo userRepo, IRefreshTokenRepo refreshTokenRepo, IProductRepo productRepository, ICartRepo CartRepository, ICartItemRepo cartItemRepository)
         {
             _dbcontext = context;
             _userRepo = userRepo;
             _refreshTokenRepo = refreshTokenRepo;
             _ProductRepository = productRepository;
+            _CartRepository = CartRepository;
+            _CartItemRepository = cartItemRepository;
         }
         public async Task<int> CompleteAsync() => await _dbcontext.SaveChangesAsync();
 

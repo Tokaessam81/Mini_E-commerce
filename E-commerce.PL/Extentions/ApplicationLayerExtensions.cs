@@ -5,6 +5,7 @@ using E_commerce.Application.Service.Contract;
 using E_commerce.Infrastructure.Persistence;
 using E_commerce.Infrastructure.Repositories;
 using E_commerce.Infrastructure.Services;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace E_commerce.PL.Extentions
 {
@@ -19,6 +20,9 @@ namespace E_commerce.PL.Extentions
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProductService, ProductServices>();
+            services.AddScoped<ICartRepo, CartRepo>();
+            services.AddScoped<ICartItemRepo, CartItemRepo>();
+            services.AddScoped<ICartService, CartService>();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddCors(options =>
             {

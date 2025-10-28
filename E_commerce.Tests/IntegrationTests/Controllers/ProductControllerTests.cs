@@ -45,9 +45,11 @@ namespace E_commerce.Tests.IntegrationTests.Controllers
 
             var productRepo = new ProductRepo(_context);
             var userRepo = new UserRepo(_context); 
+            var cartRepo = new CartRepo(_context);
+            var cartItemRepo = new CartItemRepo(_context);
             var refreshRepo = new RefreshTokenRepo(_context);
 
-            var unitOfWork = new UnitOfWork(_context, userRepo, refreshRepo, productRepo);
+            var unitOfWork = new UnitOfWork(_context, userRepo, refreshRepo, productRepo,cartRepo,cartItemRepo);
 
             _service = new ProductServices(unitOfWork);
             _controller = new ProductController(_service, _mapper);

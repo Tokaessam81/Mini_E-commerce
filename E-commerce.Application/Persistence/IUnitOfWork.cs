@@ -14,5 +14,7 @@ namespace E_commerce.Application.Persistence
         IUserRepo _userRepo { get; set; }
         IRefreshTokenRepo _refreshTokenRepo { get; set; }
         IProductRepo _ProductRepository { get; set; }
+        ICartRepo _CartRepository { get; set; }
+        ICartItemRepo _CartItemRepository { get; set; }
     }
 }
